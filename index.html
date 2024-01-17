@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image flex</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        transition: transform 0.5s;
+        overflow: hidden;
+      }
+      .panel > * {
+        display: flex;
+        flex: 1 0 auto;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+      }
+      .panel > *:first-child {
+        transform: translateY(-100%);
+      }
+      .panel.open-active > *:first-child {
+        transform: translateY(0%);
+      }
+      .panel > *:last-child {
+        transform: translateY(100%);
+      }
+      .panel.open-active > *:last-child {
+        transform: translateY(0%);
+      }
+      .panels {
+        display: flex;
+        min-height: 100vh;
+        flex: 0 1 auto;
+      }
+      .panel {
+        display: flex;
+        flex: 1;
+        color: rgb(159, 94, 224);
+        font-family: cursive;
+        font-size: 20px;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        background-size: cover;
+        background-position: center;
+        flex-direction: column;
+        transition: font-size 0.7s, flex 0.7s, background 0.2s;
+      }
+      .panel.open {
+        flex: 5;
+        font-size: 50px;
+      }
+      .panel1 {
+        background-image: url(https://source.unsplash.com/600x600/?program);
+      }
+      .panel2 {
+        background-image: url(https://source.unsplash.com/600x600/?technology,computer,ios);
+      }
+      .panel3 {
+        background-image: url(https://source.unsplash.com/600x600/?nature,greeny);
+      }
+      .panel4 {
+        background-image: url(https://source.unsplash.com/600x600/?technology);
+      }
+      .panel5 {
+        background-image: url(https://source.unsplash.com/600x600/?forest,safari,animal);
+      }
+      p:nth-child(2) {
+        font-size: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="panels">
+      <div class="panel panel1">
+        <p></p>
+        <p>Hello</p>
+        <p>to YOU ALL</p>
+      </div>
+      <div class="panel panel2">
+        <p>wonder</p>
+        <p>World</p>
+        <p>webs</p>
+      </div>
+      <div class="panel panel3">
+        <p>The</p>
+        <p>natural</p>
+        <p>weather</p>
+      </div>
+      <div class="panel panel4">
+        <p>the</p>
+        <p>techno</p>
+        <p>future</p>
+      </div>
+      <div class="panel panel5">
+        <p>the</p>
+        <p>desert</p>
+        <p>animal</p>
+      </div>
+    </div>
+    <script>
+      const panels = document.querySelectorAll(".panel");
+      function toggleopen() {
+        this.classList.toggle("open");
+        this.classList.toggle("open-active");
+      }
+
+      panels.forEach((panel) => panel.addEventListener("click", toggleopen));
+      panels.forEach((panel) =>
+        panel.addEventListener("transitioned", toggleactive)
+      );
+    </script>
+  </body>
+</html>
